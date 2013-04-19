@@ -1,0 +1,75 @@
+<!DOCTYPE html5>
+<html>
+<head>
+    <title>Canvas</title>
+</head>
+<body>
+    
+    <canvas id="canvas" width="500" height="500" style="border: 1px solid black;">No Have Canvas!</canvas>
+    
+    <script type="text/javascript">
+        
+        var can = document.getElementById('canvas');
+        var ctx = can.getContext("2d");
+        
+        var p,key,size,speed;
+        
+        p = {
+            x: 10,
+            y: 10
+        };
+        
+        size = 10;
+        speed = 1;
+        
+        setInterval(function () {
+            
+            // Gather keys
+            
+            // Left
+            if(key == 37) {
+                p.x -= speed;
+            }
+            
+            // Up
+            if(key == 38) {
+                p.y -= speed;
+            }
+            
+            // Right
+            if(key == 39) {
+                p.x += speed;
+            }
+            
+            //Down
+            if (key == 40) {
+                p.y += speed;
+            }
+            
+            key = null;
+            
+            paint();
+            
+        }, 1000/6);
+        
+        
+        document.onkeydown = function (e) {
+            key = e.keyCode;
+        };
+        
+        function paint() {
+            
+            ctx.clearRect(0, 0, 501, 501);
+            
+            ctx.beginPath();
+            ctx.rect(p.x * size, p.y * size, size, size);
+            ctx.fillStyle = "green";
+            ctx.fill();           
+            
+        };
+        
+        
+    </script>
+    
+</body>
+</html>
